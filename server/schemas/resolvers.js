@@ -13,7 +13,7 @@ const resolvers = {
     },
 
     Mutation: {
-        login: async (parent, {email, password}) => {
+        loginUser: async (parent, {email, password}) => {
             const user = await User.findOne({ $or: [{ username: username }, { email: email }] });
             if (!user) {
               throw new AuthenticationError("Can't find this user");
@@ -66,3 +66,5 @@ const resolvers = {
 
     }
 }
+
+module.exports = resolvers
